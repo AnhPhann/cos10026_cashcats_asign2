@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Application Page">
+    <meta name="keyword" content="application, apply">
+    <meta name="author" content="Hoa Thai Phat">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="images/web-icon.png">
+    <title>Job Application</title>
+</head>
+
+<body>
+    
+    <!-- NAV BAR -->
+    <header>
+        <a href="index.html" class="logo"><img src="./images/PixelCat.png" alt="CashCats Logo">CashCats</a>
+        
+        <input type="checkbox" id="menu-bar">
+        <label for="menu-bar" class="nav-icons">
+            <i class="fa" id="menu-icon">&#xf0c9;</i>
+            <i class="fa" id="close-icon">&#xf00d;</i>
+        </label>
+        
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="enhancements.html">Enhancements</a></li>
+                <li><a href="application.html" class="hidden">Apply Now</a></li>
+            </ul>
+        </nav>
+    
+        <a href="application.html" class="action-btn">Apply Now</a>
+    </header>
+
+  
+  <!-- NOT HOME BANNER -->
+    <div class="main-banner">
+        <img src="./images/cat-bg.png" alt="" id="banner-bg">
+            
+        <div class="banner-overlay">
+            <div class="caption">
+                <h2>
+                    <em>Interested?</em><br>
+                    Join our team!!
+                </h2>
+            </div>
+        </div>
+    </div>
+  
+  <!-- FORM -->
+    <form action="https://mercury.swin.edu.au/it000000/formtest.php" class="apply-form" method="post">
+        <fieldset class="form-group">
+            <label for="job-ref-num">Job Reference Number:</label>
+            <input type="text" id="job-ref-num" name="job-ref-num" pattern="[a-zA-Z0-9]{5}"
+                placeholder="Enter Job Reference Number" autofocus="1" aria-label="Job Reference Number" require>
+        </fieldset>
+            
+        <fieldset class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="first-name" name="first-name" maxlength="20" 
+                placeholder="Enter Your First Name" autofocus="1" aria-label="First Name" required>
+        </fieldset>
+                
+        <fieldset class="form-group">
+            <label for="lastName">Last Name:</label> 
+            <input type="text" id="last-name" name="last-name" maxlength="20" 
+                placeholder="Enter Your Last Name" autofocus="1" aria-label="Last Name" required> 
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" pattern="\d{1,2}\/\d{1,2}\/\d{4}" required>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="gender">Gender:</label>
+            <section class="grid-container">
+                <label class="grid-body" for="male">Male<input type="radio" name="gender" value="Male" required></label>
+                <label class="grid-body" for="female">Female<input type="radio" name="gender" value="Female" required></label>
+                <label class="grid-body" for="othes">Others<input type="radio" name="gender" value="Other" required></label>
+            </section>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="address">Street Address:</label>
+            <input type="text" id="street-address" name="street-address" maxlength="40"
+                placeholder="Enter Your Street Address" autofocus="1" aria-label="Street Address" required> 
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="suburb">Suburb/Town:</label>
+            <input type="text" id="suburb" name="suburb" maxlength="40" 
+                placeholder="Enter Your Surburb / Town" autofocus="1" aria-label="Surburb/Town" required> 
+        </fieldset>
+        
+        <fieldset class="form-group">
+            <label for="state">State:</label>
+            <select id="state" name="state" required>
+                <option value="">Please Select Your State</option>
+                <option value="VIC">VIC</option>
+                <option value="NSW">NSW</option>
+                <option value="QLD">QLD</option>
+                <option value="NT">NT</option>
+                <option value="WA">WA</option>
+                <option value="SA">SA</option>
+                <option value="TAS">TAS</option>
+                <option value="ACT">ACT</option>
+            </select>
+        </fieldset>
+        
+        <fieldset class="form-group">
+            <label for="postcode">Postcode:</label>
+            <input type="text" id="postcode" name="postcode" pattern="[0-9]{4}" 
+                placeholder="Enter your Postcode" autofocus="1" aria-label="Enter your Postcode" required> 
+        </fieldset>
+        
+        <fieldset class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" 
+                placeholder="Enter your email" autofocus="1" aria-label="Enter your email" required> 
+        </fieldset>
+        
+        <fieldset class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9\s]{8,12}" 
+                placeholder="Enter your phone number" autofocus="1" aria-label="Enter your phone number" required>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="skills">Skills:</label>
+            <section class="grid-container">
+                <label class="grid-body" for="HTML">HTML<input type="checkbox" name="skills[]" value="HTML" required></label>
+                <label class="grid-body"for="CSS">CSS<input  type="checkbox" name="skills[]" value="CSS" required></label>
+                <label class="grid-body" for="JavaScript">JavaScript<input type="checkbox" name="skills[]" value="JavaScript" required></label>
+            </section>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="other-skills">Other Skills:</label>
+            <textarea id="other-skills" name="other-skills" placeholder="i.e. Java / C / C++ / Python / ..." rows="4"></textarea>
+        </fieldset>
+
+        <section class="apply-button">
+            <input type="reset" class="btn" value="Reset">
+            <input type="submit" class="btn" value="Apply">
+        </section>
+    </form>
+
+
+    <!-- Footer -->
+    <footer>
+        <article class="footer-container">
+            <section class="foot-brand">
+                <div class="foot-logo">
+                    <img src="images/PixelCat.png" alt="CashCats">
+                </div>
+                <div class="foot-logo-content">
+                    <p>Connect with CashCats</p>
+                    <ul>
+                        <li><a href="https://www.facebook.com/chippi1902"><i class="fa">&#xf082;</i></a></li>
+                        <li><a href="https://www.instagram.com/anh.phann_/"><i class="fa">&#xf16d;</i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCBStF1-Hno4O2bdqgv-Ym_Q"><i class="fa">&#xf16a;</i></a></li>
+                        <li><a href="mailto:104522443@student.swin.edu.au"><i class="fa">&#xf064;</i></a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="foot-contact">
+                <div class="foot-contact-content foot-hidden">
+                    <h5><a href="#">About</a></h5>
+                    <ul>
+                        <li><a href="about.html">Our Team</a></li>
+                        <li><a href="index.html">Our Home</a></li>
+                        <li><a href="jobs.html">Our Jobs</a></li>
+                        <li><a href="enhancement.html">Our Enhancements</a></li>
+                        <li><a href="https://www.swinburne.edu.au/about/our-university/">Our University</a></li>
+                    </ul>
+                </div>
+                <div class="foot-contact-content">
+                    <h5><a href="#">Pages</a></h5>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html">Index</a></li>
+                        <li><a href="jobs.html">Jobs Listing</a></li>
+                        <li><a href="application.html">Application</a></li>
+                        <li><a href="enhancement.html">Enhancements</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </article>
+        <section class="final-footer">
+            <span>Copyright © 2024 
+                <span class="foot-hidden"> - All rights reserved || <a href="https://www.swinburne.edu.au/copyright-disclaimer/">Copyright and disclaimer</a></span>
+            </span>
+            <span>Designed By: <a href="mailto:102522443@student.swin.edu.au" class="mail">CashCats</a></span>
+        </section>
+    </footer>
+</body>
+</html>
