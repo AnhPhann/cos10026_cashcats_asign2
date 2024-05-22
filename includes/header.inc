@@ -5,4 +5,5 @@
 <meta name="author" content="Anh Phan, Hoa Thai Phat, Quinn Friend, Fletcher Scott">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="icon" type="image/png" href="images/web-icon.png">

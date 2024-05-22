@@ -206,7 +206,7 @@
                 <ul>
                     <li>Bachelor's degree in Information Technology or related field.</li>
                     <li>Prior experience in IT support or help-desk jobs.</li>
-                    <li>A strong learning attitude and able to adapt to new situations/</li>
+                    <li>A strong learning attitude and able to adapt to new situations.</li>
                 </ul>
             </section>
             

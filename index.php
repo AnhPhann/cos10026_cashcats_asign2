@@ -81,7 +81,7 @@
             <p><strong>Reference Number:</strong> WDE0001</p>
             <p>Full-stack Developer</p>
             <ul class="social-icons">
-                <li><a href="jobs.html">+ View More</a></li>
+                <li><a href="jobs.php">+ View More</a></li>
             </ul>
         </section>
         <section class="jobs-demo">
@@ -91,7 +91,7 @@
             <p><strong>Reference Number:</strong> SAN0031</p>
             <p>Database Managment</p>            
             <ul class="social-icons">
-                <li><a href="jobs.html">+ View More</a></li>
+                <li><a href="jobs.php">+ View More</a></li>
             </ul>
         </section>
         <section class="jobs-demo">
@@ -101,7 +101,7 @@
             <p><strong>Reference Number:</strong> ITS0021</p>
             <p>Technical Assistance</p>            
             <ul class="social-icons">
-                <li><a href="jobs.html">+ View More</a></li>
+                <li><a href="jobs.php">+ View More</a></li>
             </ul>
         </section>
     </section>

@@ -16,4 +16,4 @@
     </ul>
 </nav>
 
-<a href="application.html" class="action-btn">Apply Now</a>
+<a href="application.php" class="action-btn">Apply Now</a>
