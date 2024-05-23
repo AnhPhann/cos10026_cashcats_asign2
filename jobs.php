@@ -41,7 +41,7 @@
             
             <section class="middle">
                 <h2>Web Developer</h2>
-                <h4>Reference Number: WDE00001</h4>
+                <h4>Reference Number: WDE01</h4>
                 <p><i class="material-icons">location_on</i>Melbourne, VIC, Australia</p>
                 <p><i class="material-icons">attach_money</i>A$70,000 - A$80,000</p>
                 <p><i class="material-icons">access_time</i>Full-time</p>
@@ -106,7 +106,7 @@
             
             <section class="middle">
                 <h2>Systems Analyst</h2>
-                <h4>Reference Number: SAN00031</h4>
+                <h4>Reference Number: SAN02</h4>
                 <p><i class="material-icons">location_on</i>Melbourne, VIC, Australia</p>
                 <p><i class="material-icons">attach_money</i>A$80,000 - A$100,000</p>
                 <p><i class="material-icons">access_time</i>Full-time</p>
@@ -168,7 +168,7 @@
             
             <section class="middle">
                 <h2>IT Support Specialist</h2>
-                <h4>Reference Number: ITS00021</h4>
+                <h4>Reference Number: ITS03</h4>
                 <p><i class="material-icons">location_on</i>Melbourne, VIC, Australia</p>
                 <p><i class="material-icons">attach_money</i>A$40,000 - A$55,000</p>
                 <p><i class="material-icons">access_time</i>Full-time</p>

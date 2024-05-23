@@ -78,7 +78,7 @@
             <img src="images/jobs-demo-1.png" alt="IT1">
             <span><em>A$70,000+</em></span>
             <h4>Web Developer</h4>
-            <p><strong>Reference Number:</strong> WDE0001</p>
+            <p><strong>Reference Number:</strong> WDE01</p>
             <p>Full-stack Developer</p>
             <ul class="social-icons">
                 <li><a href="jobs.php">+ View More</a></li>
@@ -88,7 +88,7 @@
             <img src="images/jobs-demo-2.png" alt="IT2">
             <span><em>A$80,000+</em></span>
             <h4>Systems Analyst</h4>
-            <p><strong>Reference Number:</strong> SAN0031</p>
+            <p><strong>Reference Number:</strong> SAN02</p>
             <p>Database Managment</p>            
             <ul class="social-icons">
                 <li><a href="jobs.php">+ View More</a></li>
@@ -98,7 +98,7 @@
             <img src="images/jobs-demo-3.png" alt="IT3">
             <span><em>A$40,000+</em></span>
             <h4>IT Supporter</h4>
-            <p><strong>Reference Number:</strong> ITS0021</p>
+            <p><strong>Reference Number:</strong> ITS03</p>
             <p>Technical Assistance</p>            
             <ul class="social-icons">
                 <li><a href="jobs.php">+ View More</a></li>

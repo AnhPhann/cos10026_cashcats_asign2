@@ -1,4 +1,4 @@
-<a href="index.html" class="logo"><img src="./images/PixelCat.png" alt="CashCats Logo">CashCats</a>
+<a href="index.php" class="logo"><img src="./images/PixelCat.png" alt="CashCats Logo">CashCats</a>
 
 <input type="checkbox" id="menu-bar">
 <label for="menu-bar" class="nav-icons">

@@ -35,20 +35,20 @@
   <!-- FORM -->
     <form action="https://mercury.swin.edu.au/it000000/formtest.php" class="apply-form" method="post">
         <fieldset class="form-group">
-            <label for="job-ref-num">Job Reference Number:</label>
-            <input type="text" id="job-ref-num" name="job-ref-num" pattern="[a-zA-Z0-9]{5}"
+            <label for="jobRefNum">Job Reference Number:</label>
+            <input type="text" id="jobRefNum" name="jobRefNum" pattern="[a-zA-Z0-9]{5}"
                 placeholder="Enter Job Reference Number" autofocus="1" aria-label="Job Reference Number" require>
         </fieldset>
             
         <fieldset class="form-group">
             <label for="firstName">First Name:</label>
-            <input type="text" id="first-name" name="first-name" maxlength="20" 
+            <input type="text" id="firstName" name="firstName" maxlength="20" 
                 placeholder="Enter Your First Name" autofocus="1" aria-label="First Name" required>
         </fieldset>
                 
         <fieldset class="form-group">
             <label for="lastName">Last Name:</label> 
-            <input type="text" id="last-name" name="last-name" maxlength="20" 
+            <input type="text" id="lastName" name="lastName" maxlength="20" 
                 placeholder="Enter Your Last Name" autofocus="1" aria-label="Last Name" required> 
         </fieldset>
 
@@ -62,20 +62,20 @@
             <section class="grid-container">
                 <label class="grid-body" for="male">Male<input type="radio" name="gender" value="Male" required></label>
                 <label class="grid-body" for="female">Female<input type="radio" name="gender" value="Female" required></label>
-                <label class="grid-body" for="othes">Others<input type="radio" name="gender" value="Other" required></label>
+                <label class="grid-body" for="others">Others<input type="radio" name="gender" value="Other" required></label>
             </section>
         </fieldset>
 
         <fieldset class="form-group">
             <label for="address">Street Address:</label>
-            <input type="text" id="street-address" name="street-address" maxlength="40"
+            <input type="text" id="address" name="address" maxlength="40"
                 placeholder="Enter Your Street Address" autofocus="1" aria-label="Street Address" required> 
         </fieldset>
 
         <fieldset class="form-group">
             <label for="suburb">Suburb/Town:</label>
             <input type="text" id="suburb" name="suburb" maxlength="40" 
-                placeholder="Enter Your Surburb / Town" autofocus="1" aria-label="Surburb/Town" required> 
+                placeholder="Enter Your Suburb / Town" autofocus="1" aria-label="Suburb/Town" required> 
         </fieldset>
         
         <fieldset class="form-group">
@@ -121,8 +121,8 @@
         </fieldset>
 
         <fieldset class="form-group">
-            <label for="other-skills">Other Skills:</label>
-            <textarea id="other-skills" name="other-skills" placeholder="i.e. Java / C / C++ / Python / ..." rows="4"></textarea>
+            <label for="otherSkills">Other Skills:</label>
+            <textarea id="otherSkills" name="otherSkills" placeholder="i.e. Java / C / C++ / Python / ..." rows="4"></textarea>
         </fieldset>
 
         <section class="apply-button">
