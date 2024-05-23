@@ -12,6 +12,7 @@
         <li><a href="jobs.php">Jobs</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="enhancements.php">Enhancements</a></li>
+        <li><a href="login.php">Log In</a></li>
         <li><a href="application.php" class="hidden">Apply Now</a></li>
     </ul>
 </nav>

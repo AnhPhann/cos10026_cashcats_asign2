@@ -85,7 +85,7 @@
             </section>
             
             <section class="main-button">
-                <a href="application.html">Apply Now</a>
+                <a href="application.php">Apply Now</a>
             </section>
         </article>
     </article>
@@ -148,7 +148,7 @@
             </section>
             
             <section class="main-button">
-                <a href="application.html">Apply Now</a>
+                <a href="application.php">Apply Now</a>
             </section>
         </article>
     </article>
@@ -211,7 +211,7 @@
             </section>
             
             <section class="main-button">
-                <a href="application.html">Apply Now</a>
+                <a href="application.php">Apply Now</a>
             </section>
         </article>
     </article>
