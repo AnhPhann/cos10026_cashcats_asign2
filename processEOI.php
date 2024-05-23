@@ -1,111 +1,210 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] != "POST")
-{
+if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+    require_once("settings.php");
+
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+
+    $error = "";
+
+    // CREATE TABLE IF Table not exist
+    $query = "CREATE TABLE IF NOT EXISTS eoi (
+        EOInumber INT(10) AUTO_INCREMENT PRIMARY KEY,
+        jobRefNum VARCHAR(5),
+        firstName VARCHAR(20),
+        lastName VARCHAR(20),
+        dob VARCHAR(10),
+        gender VARCHAR(6),
+        address VARCHAR(40),
+        suburb VARCHAR(40),
+        state VARCHAR(3),
+        postcode CHAR(4),
+        email VARCHAR(40),
+        phone VARCHAR(12),
+        otherSkills VARCHAR(500)
+    );
+    ";
+
+    // Sanitize and validate input fields
+    list($error, $jobRefNum) = validate_input($conn, "jobRefNum", $error);
+    list($error, $firstName) = validate_input($conn, "firstName", $error);
+    list($error, $lastName) = validate_input($conn, "lastName", $error);
+    list($error, $address) = validate_input($conn, "address", $error);
+    list($error, $postcode) = validate_input($conn, "postcode", $error);
+    list($error, $email) = validate_input($conn, "email", $error);
+    list($error, $phone) = validate_input($conn, "phone", $error);
+    list($error, $dob) = validate_input($conn, "dob", $error);
+    list($error, $gender) = validate_input($conn, "gender", $error);
+    list($error, $state) = validate_input($conn, "state", $error);
+    list($error, $skills) = validate_input($conn, "skills", $error);
+    list($error, $otherSkills) = validate_input($conn, "otherSkills", $error);
+    $status = "New";
+
+    // Check postcode matches state
+    $error = validate_postcode($state, $postcode, $error);
+
+    // Calculate age and validate
+    $age = validate_age($dob);
+    if ($age >= 80 || $age <= 15) {
+        $error .= "<p>Your age is not appropriate.</p>";
+    }
+
+    // If no errors, insert EOI into database
+    if (empty($error)) {
+        $stmt = $conn->prepare('INSERT INTO eoi (jobRefNum, firstName, lastName, address, postcode, email, phone, dob, gender, state, skills, otherSkills, status)
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $stmt->bind_param('ssssisssssiss', $jobRefNum, $firstName, $lastName, $address, $postcode, $email, $phone, $dob, $gender, $state, $skills, $otherSkills, $status);
+        
+        $conn->begin_transaction();
+        $stmt->execute();
+        $EOINum = $stmt->insert_id;
+        $conn->commit();
+
+        echo "<p>Your Expression of Interest Number is: {$EOINum}.</p>";
+        $stmt->close();
+    } else {
+        echo $error;
+    }
+
+    $conn->close();
+
+} else {
     header("Location: application.php");
     exit;
 }
 
-require_once("settings.php");
-
-$conn = @mysqli_connect($host, $user, $pwd, $sql_db);
-
-function sanitize_input($data, $conn) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    $data = mysqli_real_escape_string($conn, $data);
-    return $data;
+################################################  FUNCTIONS  ################################################
+// Calculate age from date of birth
+function validate_age($dob) {
+    // Check if the date matches the format "dd/mm/yyyy"
+    if (!preg_match('/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[1,2])\/(19|20)\d{2}$/', $dob))
+    {
+        return false;
+    }
+    
+    $birthDate = DateTime::createFromFormat('d/m/Y', $dob);
+    $currentDate = new DateTime();
+    $age = $currentDate->diff($birthDate)->y;
+    return ($age >= 15 && $age <= 80);
 }
 
-function validate_input($data, $error) {
-
-    if (isset($_POST[$data])) {
-        if ($data == "skills") {
-            $data = implode(",", $_POST[$data]);
+// Sanitize and validate input function
+function validate_input($conn, $field, $error) {
+    if (isset($_POST[$field])) { 
+        if ($field == "skills") {
+            $input = implode(",", $_POST[$field]);
         } else {
-            $data = $_POST[$data];
+            $input = $_POST[$field];
         }
     } else {
-        $data = "";
-        if ($data != "otherskills" && $data != "skills") {
-            $error .= "<p>{$data} is empty!</p>";
+        $input = "";
+        if ($field != "otherSkills" && $field != "skills") {
+            $error .= "<p>$field is required.</p>";
         }
     }
     
-    switch ($data) {
+    $input = $conn->real_escape_string(trim($input));
+    
+    switch ($field) {
         case "jobRefNum":
-            if (strlen($data) !== 5) {
-                $error .= "<p>Your Job Reference Number must be exactly 5 characters.</p>";
-            }
-            if (!preg_match('/^[a-zA-Z0-9]+$/', $data)) {
-                $error .= "<p>Your Job Reference Number must be alphanumeric.</p>";    
+            if (!preg_match('/^[a-zA-Z0-9]{5}$/', $input)) { 
+                $error .= "<p>Job Reference Number must be 5 alphanumeric characters.</p>";
             }
             break;
         case "firstName":
-            if (strlen($data) > 20) {
-                $error .= "<p>Your First Name must be less than 20 characters.</p>";
-            }
-            if (!preg_match('/^[a-zA-Z]+$/', $data)) {
-                $error .= "<p>Your First Name must only contain letters.</p>";    
+            if (!preg_match('/^[a-zA-Z ]{1,20}$/', $input)) {
+                $error .= "<p>First Name must contain only letters and spaces, max 20 characters.</p>";
             }
             break;
         case "lastName":
-            if (strlen($data) > 20) {
-                $error .= "<p>Your Last Name must be less than 20 characters.</p>";
-            }
-            if (!preg_match('/^[a-zA-Z]+$/', $data)) {
-                $error .= "<p>Your Last Name must only contain letters.</p>";    
+            if (!preg_match('/^[a-zA-Z ]{1,20}$/', $input)) {
+                $error .= "<p>Last name must contain only letters and spaces, max 20 characters.</p>";
             }
             break;
         case "address":
-            if (strlen($data) > 40) {
-                $error .= "<p>Your Address must be less than 40 characters.</p>";
+            if (strlen($input) > 40) {
+                $error .= "<p>Address must be less than 40 characters.</p>";
             }
             break;
         case "postcode":
-            if (strlen($data) !== 4) {
-                $error .= "<p>Your Postcode must be exactly 4 characters.</p>";
-            }
-            if (!preg_match('/^[0-9]+$/', $data)) {
-                $error .= "<p>Your Postcode must only contain numbers.</p>";
-            }
+            if (!preg_match('/^[0-9]{4}$/', $input)) {
+                $error .= "<p>Postcode must be 4 digits.</p>";
+            } 
             break;
         case "email":
-            if (!filter_var($data, FILTER_VALIDATE_EMAIL)) {
-                $error .= "<p>Your email is invalid.</p>";
+            if (!filter_var($input, FILTER_VALIDATE_EMAIL)) {
+                $error .= "<p>Email is invalid.</p>";
             }
             break;
         case "phone":
-            if (strlen($data) > 12 || strlen($data) < 8) {
-                $error .= "<p>Your Phone Number must be between 12 and 8 characters.</p>";
-            }
-            if (!preg_match('/^[0-9\s]+$/', $data)) {
-                $error .= "<p>Your Phone Number must only contain numbers and spaces.</p>";
+            if (!preg_match('/^[0-9 ]{8,12}$/', $input)) {
+                $error .= "<p>Phone number must contain 8-12 digits and spaces.</p>";
             }
             break;
         case "dob":
-            list($dd,$mm,$yyyy) = explode('/',$data);
-            if (!checkdate($mm,$dd,$yyyy)) {
-                    $error .= "<p>Your Date of Birth is invalid.</p>";
+            if (!preg_match('/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/', $input)) {
+                $error .= "<p>Date of Birth must be a valid date in dd/mm/yyyy format.</p>";
             }
             break;
         case "gender":
-            if (strlen($data) === 0) {
-                $error .= "<p>Your gender must be selected</p>";
+            if ($input != "Male" && $input != "Female" && $input != "Other") {
+                $error .= "<p>Please select a valid gender.</p>";
             }
             break;
         case "state":
-            if (!in_array($data, array("VIC", "NSW", "QLD", "WA", "NT", "SA", "ACT", "TAS"))) {
-                $error .= "<p>Your State is invalid.</p>";
+            $states = ["VIC", "NSW", "QLD", "WA", "NT", "SA", "ACT", "TAS"];
+            if (!in_array($input, $states)) {
+                $error .= "<p>Please select a valid state.</p>";
             }
-            break;
-        case "skills":
-            break;
-
-        case "otherSkills":
             break;
     }
     
-    return array($error, $data);
+    return array($error, $input);
 }
+
+// Validate postcode matches state
+function validate_postcode($state, $postcode, $error) {
+    switch ($state) {
+        case "VIC":
+            if (!preg_match('/^3[0-9]{3}$/', $postcode)) {
+                $error .= "<p>Postcode does not match state selected.</p>";
+            }
+            break;
+        case "NSW":
+            if (!preg_match('/^((2[0-5][0-9]{2})|(26[1-9][0-9]{2})|(2[7-8][0-9]{2})|(29[2-9][0-9]{2}))$/', $postcode)) {
+                $error .= "<p>Postcode does not match state selected.</p>";
+            }
+            break;
+        case "QLD":
+            if (!preg_match('/^4[0-9]{3}$/', $postcode)) {
+                $error .= "<p>Postcode does not match state selected.</p>";
+            }
+            break;
+        case "NT":
+            if (!preg_match("/^08[0-9]{2}$/", $postcode)) {
+                $error .= "<p>Postcode does not match state selected.</p>";;
+            }
+            break;
+        case "WA":
+            if (!preg_match('/^((66[0-9]{2})|(67[0-8][0-9])|(679[0-7]))$/', $postcode)) {
+                $error .= "<p>Postcode does not match state selected.</p>";
+            }
+            break;
+        case "SA":
+            if (!preg_match('/^5[0-7][0-9]{2}$/', $postcode)) {
+                $error .= "<p>Postcode does not match state selected.</p>";
+            }
+            break;
+        case "TAS":
+            if (!preg_match('/^7[0-7][0-9]{2}$/', $postcode)) {
+                $error .= "<p>Postcode does not match state selected.</p>";
+            }
+            break;
+        case "ACT":
+            if (!preg_match('/^((260[0-9])|(261[0-8]))$/', $postcode)) {
+                $error .= "<p>Postcode does not match state selected.</p>";
+            }
+            break;
+        }
+        return $error;
+    }

@@ -33,54 +33,54 @@
     </div>
   
   <!-- FORM -->
-    <form action="https://mercury.swin.edu.au/it000000/formtest.php" class="apply-form" method="post">
+    <form action="processEOI.php" class="apply-form" method="post">
         <fieldset class="form-group">
             <label for="jobRefNum">Job Reference Number:</label>
             <input type="text" id="jobRefNum" name="jobRefNum" pattern="[a-zA-Z0-9]{5}"
-                placeholder="Enter Job Reference Number" autofocus="1" aria-label="Job Reference Number" require>
+                placeholder="Enter Job Reference Number" autofocus="1" aria-label="Job Reference Number" >
         </fieldset>
             
         <fieldset class="form-group">
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName" maxlength="20" 
-                placeholder="Enter Your First Name" autofocus="1" aria-label="First Name" required>
+                placeholder="Enter Your First Name" autofocus="1" aria-label="First Name" >
         </fieldset>
                 
         <fieldset class="form-group">
             <label for="lastName">Last Name:</label> 
             <input type="text" id="lastName" name="lastName" maxlength="20" 
-                placeholder="Enter Your Last Name" autofocus="1" aria-label="Last Name" required> 
+                placeholder="Enter Your Last Name" autofocus="1" aria-label="Last Name" > 
         </fieldset>
 
         <fieldset class="form-group">
             <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" pattern="\d{1,2}\/\d{1,2}\/\d{4}" required>
+            <input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" pattern="\d{1,2}\/\d{1,2}\/\d{4}" >
         </fieldset>
 
         <fieldset class="form-group">
             <label for="gender">Gender:</label>
             <section class="grid-container">
-                <label class="grid-body" for="male">Male<input type="radio" name="gender" value="Male" required></label>
-                <label class="grid-body" for="female">Female<input type="radio" name="gender" value="Female" required></label>
-                <label class="grid-body" for="others">Others<input type="radio" name="gender" value="Other" required></label>
+                <label class="grid-body" for="male">Male<input type="radio" name="gender" value="Male" ></label>
+                <label class="grid-body" for="female">Female<input type="radio" name="gender" value="Female" ></label>
+                <label class="grid-body" for="others">Others<input type="radio" name="gender" value="Other" ></label>
             </section>
         </fieldset>
 
         <fieldset class="form-group">
             <label for="address">Street Address:</label>
             <input type="text" id="address" name="address" maxlength="40"
-                placeholder="Enter Your Street Address" autofocus="1" aria-label="Street Address" required> 
+                placeholder="Enter Your Street Address" autofocus="1" aria-label="Street Address" > 
         </fieldset>
 
         <fieldset class="form-group">
             <label for="suburb">Suburb/Town:</label>
             <input type="text" id="suburb" name="suburb" maxlength="40" 
-                placeholder="Enter Your Suburb / Town" autofocus="1" aria-label="Suburb/Town" required> 
+                placeholder="Enter Your Suburb / Town" autofocus="1" aria-label="Suburb/Town" > 
         </fieldset>
         
         <fieldset class="form-group">
             <label for="state">State:</label>
-            <select id="state" name="state" required>
+            <select id="state" name="state" >
                 <option value="">Please Select Your State</option>
                 <option value="VIC">VIC</option>
                 <option value="NSW">NSW</option>
@@ -96,27 +96,27 @@
         <fieldset class="form-group">
             <label for="postcode">Postcode:</label>
             <input type="text" id="postcode" name="postcode" pattern="[0-9]{4}" 
-                placeholder="Enter your Postcode" autofocus="1" aria-label="Enter your Postcode" required> 
+                placeholder="Enter your Postcode" autofocus="1" aria-label="Enter your Postcode" > 
         </fieldset>
         
         <fieldset class="form-group">
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" 
-                placeholder="Enter your email" autofocus="1" aria-label="Enter your email" required> 
+                placeholder="Enter your email" autofocus="1" aria-label="Enter your email" > 
         </fieldset>
         
         <fieldset class="form-group">
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" pattern="[0-9\s]{8,12}" 
-                placeholder="Enter your phone number" autofocus="1" aria-label="Enter your phone number" required>
+                placeholder="Enter your phone number" autofocus="1" aria-label="Enter your phone number" >
         </fieldset>
 
         <fieldset class="form-group">
             <label for="skills">Skills:</label>
             <section class="grid-container">
-                <label class="grid-body" for="HTML">HTML<input type="checkbox" name="skills[]" value="HTML" required></label>
-                <label class="grid-body"for="CSS">CSS<input  type="checkbox" name="skills[]" value="CSS" required></label>
-                <label class="grid-body" for="JavaScript">JavaScript<input type="checkbox" name="skills[]" value="JavaScript" required></label>
+                <label class="grid-body" for="HTML">HTML<input type="checkbox" name="skills[]" value="HTML" checked ></label>
+                <label class="grid-body"for="CSS">CSS<input  type="checkbox" name="skills[]" value="CSS" ></label>
+                <label class="grid-body" for="JavaScript">JavaScript<input type="checkbox" name="skills[]" value="JavaScript" ></label>
             </section>
         </fieldset>
 

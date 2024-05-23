@@ -4,7 +4,7 @@
 
     function check_table_exists($conn, $table_name) {
         $sql = "SELECT 1 FROM '{$table_name}' LIMIT 1";
-        $result = mysqli_query($conn, $sql);
+        $result = @mysqli_query($conn, $sql);
         return $result;
     }
 
@@ -12,12 +12,11 @@
         mysqli_query($conn, $sql);
     }
 
-    $conn = @mysqli_connect($host, $user, $pass, $db);
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
-    if ($_SERVER["REQUEST_METHOD"] != "POST")
-    {
-        header("Location: application.php");
-        exit;
+
+    if ($conn->connect_error) {
+        die(); //kill the script if there is a connection issue with the db
     }
 
     if (!check_table_exists($conn, "users")) {
