@@ -30,7 +30,7 @@
 <section class="en-container en-bg">
     <article class="en-title">
         <h2>CSS Hover Enhancement</h2>
-        <a href="about.html">Click me to view actual usage of it.</a>
+        <a href="about.php">Click me to view actual usage of it.</a>
     </article>
     
     <section class="en-vis">
@@ -73,7 +73,7 @@
 <section class="en-container">
     <article class="en-title">
         <h2>CSS Collapse Enhancement</h2>
-        <a href="jobs.html">Click me to view actual usage of it.</a>
+        <a href="jobs.php">Click me to view actual usage of it.</a>
     </article>
     
     <section class="en-vis">

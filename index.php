@@ -26,7 +26,7 @@
         <div class="caption">
             <h2>Find your desired <em>Job</em></h2>
             <section class="main-button">
-                <a href="jobs.html">View Our Jobs</a>
+                <a href="jobs.php">View Our Jobs</a>
             </section>
         </section>
     </section>
