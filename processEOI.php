@@ -1,29 +1,37 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+if ($_SERVER["REQUEST_METHOD"] !== 'POST') {
+    header('location: application.php');
+    exit;
+} else {
+
     require_once("settings.php");
 
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+    if (!$conn) {
+        header("location: application.php");
+        exit;
+    }
 
     $error = "";
 
     // CREATE TABLE IF Table not exist
     $query = "CREATE TABLE IF NOT EXISTS eoi (
-        EOInumber INT(10) AUTO_INCREMENT PRIMARY KEY,
-        jobRefNum VARCHAR(5),
-        firstName VARCHAR(20),
-        lastName VARCHAR(20),
-        dob VARCHAR(10),
-        gender VARCHAR(6),
-        address VARCHAR(40),
-        suburb VARCHAR(40),
-        state VARCHAR(3),
-        postcode CHAR(4),
-        email VARCHAR(40),
-        phone VARCHAR(12),
-        otherSkills VARCHAR(500)
-    );
-    ";
+                EOInumber INT AUTO_INCREMENT PRIMARY KEY,
+                jobRefNum CHAR(5) NOT NULL,
+                firstName VARCHAR(20) NOT NULL,
+                lastName VARCHAR(20) NOT NULL,
+                address VARCHAR(255) NOT NULL,
+                postcode INT(4) NOT NULL,
+                email VARCHAR(255) NOT NULL,
+                phone VARCHAR(12) NOT NULL,
+                dob VARCHAR(255) NOT NULL,
+                gender VARCHAR(255) NOT NULL,
+                state VARCHAR(3) NOT NULL,
+                skills VARCHAR(255) NOT NULL,
+                otherSkills VARCHAR(1024) NOT NULL,
+                status ENUM('New', 'Current', 'Final') DEFAULT 'New';
+            );";
 
     // Sanitize and validate input fields
     list($error, $jobRefNum) = validate_input($conn, "jobRefNum", $error);
@@ -66,11 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         echo $error;
     }
 
-    $conn->close();
-
-} else {
-    header("Location: application.php");
-    exit;
+    mysqli_close($conn);
 }
 
 ################################################  FUNCTIONS  ################################################
