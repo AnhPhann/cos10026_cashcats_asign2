@@ -10,7 +10,7 @@
 <body>
 
 <!-- Sidebar -->
-<div class="main-container">
+<div class="sidebar-container">
     <div class="sidebar">
         <div class="sidebar-section">
             <form method="post" action="manage.php">
@@ -30,6 +30,12 @@
                 First Name: <input type="text" name="firstName">
                 Last Name: <input type="text" name="lastName">
                 <input type="submit" name="list_by_name" value="List EOIs by Applicant" class="submit-btn">
+            </form>
+        </div>
+		
+		<div class="sidebar-section">
+            <form method="get" action="index.php">
+                <input type="submit" value="Home" class="submit-btn">
             </form>
         </div>
     </div>
@@ -107,4 +113,5 @@
 </div>
 
 </body>
+
 </html>
