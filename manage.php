@@ -20,15 +20,18 @@
 
         <div class="sidebar-section">
             <form method="post" action="manage.php">
-                Job Reference Number: <input type="text" name="jobRefNum">
+                <label for="jobRefNum">Job Reference Number:</label>
+                <input type="text" id="jobRefNum" name="jobRefNum">
                 <input type="submit" name="list_by_job" value="List EOIs by Job Reference" class="submit-btn">
             </form>
         </div>
 
         <div class="sidebar-section">
             <form method="post" action="manage.php">
-                First Name: <input type="text" name="firstName">
-                Last Name: <input type="text" name="lastName">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName">
                 <input type="submit" name="list_by_name" value="List EOIs by Applicant" class="submit-btn">
             </form>
         </div>
@@ -43,6 +46,7 @@
 
 <!-- Table & Content -->
 <div class="table-content">
+	<h1 class="table-heading">Results</h1>
     <?php
     include("settings.php");
 
@@ -56,15 +60,19 @@
         echo "<table>
                 <tr>
                     <th>EOI Number</th>
-                    <th>Job Reference Number</th>
+                    <th>Job Ref Num</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Date of Birth</th>
                     <th>Suburb</th>
                     <th>Postcode</th>
                     <th>State</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Skills</th>
+					<th>Skills</th>
+                    <th>Other Skills</th>
+                    <th>Status</th>
                 </tr>";
         if ($result) {
             while($row = mysqli_fetch_assoc($result)) {
@@ -73,12 +81,16 @@
                         <td>{$row['jobRefNum']}</td>
                         <td>{$row['firstName']}</td>
                         <td>{$row['lastName']}</td>
+                        <td>{$row['gender']}</td>
+                        <td>{$row['dob']}</td>
                         <td>{$row['suburb']}</td>
                         <td>{$row['postcode']}</td>
                         <td>{$row['state']}</td>
                         <td>{$row['phone']}</td>
                         <td>{$row['email']}</td>
+						<td>{$row['skills']}</td>
                         <td>{$row['otherSkills']}</td>
+                        <td>{$row['status']}</td>
                       </tr>";
             }
         } else {
@@ -113,5 +125,4 @@
 </div>
 
 </body>
-
 </html>
