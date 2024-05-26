@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <?php
-        include_once("./includes/header.inc.php");
+        include("./includes/header.inc.php");
+        require_once("settings.php");
+        require_once("processJOB.php");
+
+        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     ?>
     <title>Home Page</title>
 </head>
@@ -12,13 +16,13 @@
 <!-- NAV BAR -->
 <header>
     <?php
-        include_once("./includes/menu.inc.php");
+        include("./includes/menu.inc.php");
     ?>
 </header>
 
 <!-- NOT HOME BANNER -->
 <article class="main-banner">
-    <img src="./images/cat-bg.png" alt="" id="banner-bg" />
+    <img src="./images/cat-bg.png" alt="Banner Background" id="banner-bg" />
 
     <section class="banner-overlay">
     <section class="caption">
@@ -53,14 +57,28 @@
 
         <article class="description-content">
             <p class="subtitle">
-                Are you enthuastic about creating a smooth & seamless digital experiences? Join alongside the team at CashCats as a 
+                Are you enthusiastic about creating a smooth & seamless digital experiences? Join alongside the team at CashCats as a 
                 driven and confident Web Developer, where your expertise will help redefine the standard for websites.
             </p>
             <section class="job-content">
                 <h3>Description</h3>
                 <p>
-                    As a Web Developer you will be assigned the responsibility of handling the designing, coding, and modification of websites 
-                    aiding to our clients requirements.
+                    <?php
+                        $sql_table = "job";
+                        $query = "SELECT Description FROM $sql_table WHERE JobRefNum = 'WDE01'";
+                        $result = mysqli_query($conn, $query);
+
+                        if ($result) {
+                            $row = mysqli_fetch_assoc($result);
+                            if ($row) {
+                                echo $row['Description'];
+                            } else {
+                                echo "No job description found for the specified job reference number.";
+                            }
+                        } else {
+                            echo "Error executing query: " . mysqli_error($conn);
+                        }
+                    ?>
                 </p> 
                 <h3>Responsibility</h3>
                 <ol>
@@ -124,9 +142,22 @@
             <section class="job-content">
                 <h3>Description</h3>
                 <p>
-                    Being a Systems Analyst will consist of conducting research into technology systems, examining current 
-                    software and hardware setups, and developing creative ways to enhance the organization's technical 
-                    infrastructure and procedures are all part of the job description of a systems analyst.
+                    <?php
+                        $sql_table = "job";
+                        $query = "SELECT Description FROM $sql_table WHERE JobRefNum = 'SAN02'";
+                        $result = mysqli_query($conn, $query);
+
+                        if ($result) {
+                            $row = mysqli_fetch_assoc($result);
+                            if ($row) {
+                                echo $row['Description'];
+                            } else {
+                                echo "No job description found for the specified job reference number.";
+                            }
+                        } else {
+                            echo "Error executing query: " . mysqli_error($conn);
+                        }
+                    ?>
                 </p> 
                 <h3>Responsibility</h3>
                 <ol>
@@ -185,9 +216,23 @@
             </p>
             <section class="job-content">
                 <h3>Description</h3>
-                <p>Being an IT Support Specialist will involve you providing technical support and assistance to customers and users,
-                    troubleshooting issues provided to you and ensuring the effective functionality of computers, networks and systems. 
-                    This position will requirements you to have solve issues handed at you, and provide efficient communication skills.
+                <p>
+                    <?php
+                        $sql_table = "job";
+                        $query = "SELECT Description FROM $sql_table WHERE JobRefNum = 'ITS03'";
+                        $result = mysqli_query($conn, $query);
+
+                        if ($result) {
+                            $row = mysqli_fetch_assoc($result);
+                            if ($row) {
+                                echo $row['Description'];
+                            } else {
+                                echo "No job description found for the specified job reference number.";
+                            }
+                        } else {
+                            echo "Error executing query: " . mysqli_error($conn);
+                        }
+                    ?>
                 </p> 
                 <h3>Responsibility</h3>
                 <ol>
@@ -228,7 +273,7 @@
     <!-- Footer -->
     <footer>
         <?php
-            include_once("./includes/footer.inc.php");
+            include("./includes/footer.inc.php");
         ?>
     </footer>    
   </body>

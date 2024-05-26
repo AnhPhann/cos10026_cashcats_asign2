@@ -16,7 +16,7 @@ description: css file
     --semi-pink: #f9a1ef;
     --dark-pink: #9F49B8;
     --black-pink: #1F0029;
-    --semi-blue: #006ba6;
+    --semi-blue: #004971;
     --dark-gray: #495057;
 }
 
@@ -955,13 +955,14 @@ p.photo-des {
     align-items: center;
 }
 
-.form-group:nth-last-child(2),
-.form-group:nth-last-child(3) {
+.form-group:nth-last-child(2) {
     height: fit-content;
 }
 
 .fixed {
     width: 70%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .fixed input {
@@ -994,6 +995,7 @@ p.photo-des {
     display: inline-flex;
     gap: .5em;
     width: 60%;
+    justify-content: center;
 }
 
 #dob,
@@ -1105,7 +1107,7 @@ input:hover {
 }
 
 .en-vis-img img {
-    width: 50%;
+    width: 45%;
 }
 
 .en-container .photo-case {
@@ -1489,7 +1491,7 @@ footer p:last-child {
     }
 
     .form-group label,
-    .form-group input,
+    .form-group input:not(input[type="checkbox"]),
     .form-group select,
     .form-group textarea {
         text-align: center;
@@ -1507,6 +1509,10 @@ footer p:last-child {
 
     .form-group label.grid-body {
         width: 20% !important;
+    }
+
+    .fixed {
+        width: 100%;
     }
 }
 
@@ -1526,4 +1532,35 @@ footer p:last-child {
     .main-banner .caption h2 {
         font-size: 1.75rem;
     }
+}
+
+
+/* ------------------------------------------------------------------ CONFIRMATION ------------------------------------------------------------------ */
+.php-success {
+    padding: 5vh 5vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.php-success .success-msg {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.php-success img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fixed-radio {
+    display: flex;
+    align-items: center;
+}
+
+.fixed-radio input[type="radio"] {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
 }

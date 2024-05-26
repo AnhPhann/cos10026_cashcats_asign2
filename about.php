@@ -2,21 +2,25 @@
 <html lang="en">
 <head>
     <?php
-        include_once("./includes/header.inc.php");
+        include("./includes/header.inc.php");
+        require_once("settings.php");
+
+        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     ?>
+    
     <title>About Us</title>
 </head>
 <body>
 <!-- NAV BAR -->
 <header>
    <?php
-    include_once("./includes/menu.inc.php");
+    include("./includes/menu.inc.php");
     ?>
 </header>
 
 <!-- NOT HOME BANNER -->
 <section class="main-banner">
-    <img src="./images/cat-bg.png" alt="" id="banner-bg">
+    <img src="./images/cat-bg.png" alt="Banner Background" id="banner-bg">
             
         <section class="banner-overlay">
             <section class="caption">
@@ -227,7 +231,7 @@
 <!-- Footer -->
 <footer>
     <?php
-        include_once("./includes/footer.inc.php");
+        include("./includes/footer.inc.php");
     ?>
 </footer>
 

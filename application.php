@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
     <?php
-        include_once("./includes/header.inc.php");
-        require_once("settings.php"); // connection info
+        include("./includes/header.inc.php");
+        require_once("settings.php");
 
         $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     ?>
@@ -23,7 +23,7 @@
   
   <!-- NOT HOME BANNER -->
     <div class="main-banner">
-        <img src="./images/cat-bg.png" alt="" id="banner-bg">
+        <img src="./images/cat-bg.png" alt="Banner Background" id="banner-bg">
             
         <div class="banner-overlay">
             <div class="caption">
@@ -63,9 +63,9 @@
         <fieldset class="form-group">
             <label for="gender">Gender:</label>
             <section class="grid-container">
-                <label class="grid-body" for="male">Male<input type="radio" name="gender" value="Male" ></label>
-                <label class="grid-body" for="female">Female<input type="radio" name="gender" value="Female" ></label>
-                <label class="grid-body" for="others">Others<input type="radio" name="gender" value="Other" ></label>
+                <label class="grid-body" for="male">Male <div class="fixed-radio"><input type="radio" name="gender" value="Male" ></div></label>
+                <label class="grid-body" for="female">Female <div class="fixed-radio"><input type="radio" name="gender" value="Female" ></div></label>
+                <label class="grid-body" for="others">Others <div class="fixed-radio"><input type="radio" name="gender" value="Other" ></div></label>
             </section>
         </fieldset>
 
@@ -138,7 +138,7 @@
     <!-- Footer -->
     <footer>
         <?php
-            include_once("./includes/footer.inc.php");
+            include("./includes/footer.inc.php");
         ?>
     </footer>
 </body>

@@ -1,6 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+        include("./includes/header.inc.php");
+        require_once("settings.php");
+
+        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+    ?>
+    <title>Confirmation Page</title>
+</head>
+
+<body>
+
+<!-- NAV BAR -->
+<header>
+    <?php
+        include("./includes/menu.inc.php");
+    ?>
+</header>
+
 <?php
-@include 'header.inc.php';
-require_once("settings.php"); // connection info
 
 // Connect to the database
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
@@ -26,33 +45,63 @@ mysqli_stmt_close($stmt);
 mysqli_close($conn);
 ?>
 
-<div class="php-success">
-    <div class="success-message">
-        <h2>Your application has been submitted successfully! The submitted details are:</h2>
-        <ul>
-            <li><strong>EOInumber:</strong> <?php echo $row['EOInumber']; ?></li>
-            <li><strong>Job Reference Number:</strong> <?php echo $row['jobRefNum']; ?></li>
-            <li><strong>Name:</strong> <?php echo $row['firstName'] . ' ' . $row['lastName']; ?></li>
-            <li><strong>Date of Birth:</strong> <?php echo $row['dob']; ?></li>
-            <li><strong>Gender:</strong> <?php echo $row['gender']; ?></li>
-            <li><strong>Address:</strong> <?php echo $row['address'] . ', ' . $row['suburb'] . ', ' . $row['state'] . ' ' . $row['postcode']; ?></li>
-            <li><strong>Email:</strong> <?php echo $row['email']; ?></li>
-            <li><strong>Phone:</strong> <?php echo $row['phone']; ?></li>
-            <li><strong>Skills:</strong>
-                <?php
-                $skills = [];
-                if ($row['HTML']) $skills[] = 'HTML';
-                if ($row['CSS']) $skills[] = 'CSS';
-                if ($row['JavaScript']) $skills[] = 'JavaScript';
-                echo implode(", ", $skills);
-                if (!empty($row['otherSkills'])) $otherSkills = $row['otherSkills'];
-                ?>
-            <li><strong>Other skills:</strong> <?php echo $otherSkills ?>
-            </li>
-        </ul>
+<!-- NOT HOME BANNER -->
+<section class="main-banner">
+    <img src="./images/confirmation.png" alt="Confirmation Picture" id="banner-bg" />
+
+    <section class="banner-overlay">
+        <section class="caption">
+            <h2><em>Your</em> Express Of Interest <br>
+            <em>Number is <?php echo $row['EOInumber']; ?></em></h2>
+        </section>
+    </section>
+</section>
+
+<div class="container">
+    <div class="php-success">
+        <div class="success-msg">
+            <h1>Your application has been submitted successfully!</h1>
+            <h2>Submission details:</h2>
+            <ul>
+                <li><strong>EOI Number:</strong> <?php echo $row['EOInumber']; ?></li>
+                <li><strong>Job Reference Number:</strong> <?php echo $row['jobRefNum']; ?></li>
+                <li><strong>Name:</strong> <?php echo $row['firstName'] . ' ' . $row['lastName']; ?></li>
+                <li><strong>Date of Birth:</strong> <?php echo $row['dob']; ?></li>
+                <li><strong>Gender:</strong> <?php echo $row['gender']; ?></li>
+                <li><strong>Address:</strong> <?php echo $row['address'] . ', ' . $row['suburb'] . ', ' . $row['state'] . ' ' . $row['postcode']; ?></li>
+                <li><strong>Email:</strong> <?php echo $row['email']; ?></li>
+                <li><strong>Phone:</strong> <?php echo $row['phone']; ?></li>
+                <li><strong>Skills:</strong>
+                    <?php
+                        $skills = [];
+                        if ($row['HTML']) $skills[] = 'HTML';
+                        if ($row['CSS']) $skills[] = 'CSS';
+                        if ($row['JavaScript']) $skills[] = 'JavaScript';
+                        echo implode(", ", $skills);
+                        if (empty($skills)) {
+                            echo "No Preferred Skills";
+                        }
+                    ?>
+                <li>
+                    <?php
+                        if (!empty($row['otherSkills'])) {
+                            echo "<strong>Other skills: </strong>";
+                            echo $row['otherSkills'];
+                        };
+                    ?>
+                </li>
+            </ul>
+        </div>
+        <img src="images/logo.png" alt="Swinburne image">
     </div>
-    <img src="images/logo.png" alt="Confirmation image">
-    <h2 class="over-text">Confirmation Details</h2>
 </div>
 
-<?php @include 'footer.inc.php'; ?>
+<!-- Footer -->
+<footer>
+    <?php
+        include("./includes/footer.inc.php");
+    ?>
+</footer>
+
+</body>
+</html>

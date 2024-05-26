@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
     <?php
-        include_once("./includes/header.inc.php");
+        include("./includes/header.inc.php");
+        require_once("settings.php");
+
+        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     ?>
+    
     <title>Home Page</title>
 </head>
 
@@ -12,7 +16,7 @@
 <!-- Nav Bar -->
 <header>
     <?php
-        include_once("./includes/menu.inc.php");
+        include("./includes/menu.inc.php");
     ?>
 </header>
 
@@ -138,7 +142,7 @@
 <!-- Footer -->
 <footer>
     <?php
-        include_once("./includes/footer.inc.php");
+        include("./includes/footer.inc.php");
     ?>
 </footer>
 

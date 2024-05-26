@@ -11,7 +11,7 @@
         <li><a href="index.php">Home</a></li>
         <li><a href="jobs.php">Jobs</a></li>
         <li><a href="about.php">About</a></li>
-        <li class="dropdown"><a href="enhancements.php">Enhancements</a>
+        <li class="dropdown"><a href="phpenhancements.php">Enhancements</a>
             <ul class="dropdown-menu">
                 <li class="dropdown-item"><a href="enhancements.php">CSS Enhancements</a></li>
                 <li class="dropdown-item"><a href="phpenhancements.php">PHP Enhancements</a></li>
