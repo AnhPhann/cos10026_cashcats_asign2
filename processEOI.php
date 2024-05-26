@@ -59,7 +59,7 @@ if (!$conn) {
         if (!preg_match('/^[a-zA-Z ]{1,20}$/', $_POST["firstName"])) { 
             $error .= "<p>Your First Name must contain only letters and spaces, max 20 characters.</p>";
         } else {
-            $jobRefNum = sanitize_input($_POST["firstName"], $conn);
+            $firstName = sanitize_input($_POST["firstName"], $conn);
         }
     }
     
@@ -70,7 +70,7 @@ if (!$conn) {
         if (!preg_match('/^[a-zA-Z ]{1,20}$/', $_POST["lastName"])) { 
             $error .= "<p>Your last Name must contain only letters and spaces, max 20 characters.</p>";
         } else {
-            $jobRefNum = sanitize_input($_POST["lastName"], $conn);
+            $lastName = sanitize_input($_POST["lastName"], $conn);
         }
     }
         
