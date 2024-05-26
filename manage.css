@@ -10,7 +10,6 @@ description: css file for manage.php page
 
 body {
     font-family: Arial, sans-serif;
-    display: flex;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,33 +17,43 @@ body {
     scrollbar-color: var(--dark-pink) var(--light-pink) !important;
 	overflow-y: scroll !important;
 }
+
 ::-webkit-scrollbar {
     width: 5px;
 	height: 5px;
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--dark-pink);
 	border-radius: 50px;
 }
+
+.parent-sidebar {
+    display: flex;
+}
+
 .sidebar {
     width: 300px;
     padding: 20px;
-    background-color: #f0f0f0;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 	height: 100%;
 }
+
 .sidebar form {
     margin-bottom: 20px;
 }
-.sidebar input[type="submit"], .sidebar input[type="text"] {
+
+.sidebar input[type="submit"], 
+.sidebar input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
 }
+
 .sidebar .sidebar-section {
     margin-bottom: 20px;
     padding: 10px;
-    background-color: #f3f3f3;
+    background-color: var(--light-pink);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -53,13 +62,16 @@ body {
     padding: 20px;
 
 }
+
 table {
     width: 100%;
     border-collapse: collapse;
 }
+
 table, th, td {
     border: 1px solid black;
 }
+
 th, td {
     padding: 10px;
     text-align: left;
