@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php
-        include_once("./includes/header.inc");
+        include_once("./includes/header.inc.php");
     ?>
     <title>Manage Page</title>
 <link rel="stylesheet" href="manage.css">

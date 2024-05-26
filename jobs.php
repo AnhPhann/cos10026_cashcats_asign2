@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php
-        include_once("./includes/header.inc");
+        include_once("./includes/header.inc.php");
     ?>
     <title>Home Page</title>
 </head>
@@ -12,7 +12,7 @@
 <!-- NAV BAR -->
 <header>
     <?php
-        include_once("./includes/menu.inc");
+        include_once("./includes/menu.inc.php");
     ?>
 </header>
 
@@ -228,7 +228,7 @@
     <!-- Footer -->
     <footer>
         <?php
-            include_once("./includes/footer.inc");
+            include_once("./includes/footer.inc.php");
         ?>
     </footer>    
   </body>

@@ -3,8 +3,12 @@
 <html lang="en">
 <head>
     <?php
-        include_once("./includes/header.inc");
+        include_once("./includes/header.inc.php");
+        require_once("settings.php"); // connection info
+
+        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     ?>
+
     <title>Job Application</title>
 </head>
 
@@ -13,7 +17,7 @@
     <!-- NAV BAR -->
     <header>
         <?php
-            include_once("./includes/menu.inc");
+            include_once("./includes/menu.inc.php");
         ?>
     </header>
 
@@ -54,7 +58,7 @@
 
         <fieldset class="form-group">
             <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" pattern="\d{1,2}\/\d{1,2}\/\d{4}" >
+            <input type="date" id="dob" name="dob" placeholder="mm/dd/yyyy" pattern="\d{1,2}\/\d{1,2}\/\d{4}" >
         </fieldset>
 
         <fieldset class="form-group">
@@ -112,11 +116,11 @@
         </fieldset>
 
         <fieldset class="form-group">
-            <label for="skills">Skills:</label>
-            <section class="grid-container">
-                <label class="grid-body" for="HTML">HTML<input type="checkbox" name="skills[]" value="HTML" checked ></label>
-                <label class="grid-body"for="CSS">CSS<input  type="checkbox" name="skills[]" value="CSS" ></label>
-                <label class="grid-body" for="JavaScript">JavaScript<input type="checkbox" name="skills[]" value="JavaScript" ></label>
+            <label>Skills:</label>
+            <section class="fixed">
+                <article><input type="checkbox" name="HTML" value="1">HTML</article>
+                <article><input type="checkbox" name="CSS" value="1">CSS</article>
+                <article><input type="checkbox" name="JavaScript" value="1">JavaScript</article>
             </section>
         </fieldset>
 
@@ -135,7 +139,7 @@
     <!-- Footer -->
     <footer>
         <?php
-            include_once("./includes/footer.inc");
+            include_once("./includes/footer.inc.php");
         ?>
     </footer>
 </body>

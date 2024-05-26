@@ -910,10 +910,28 @@ p.photo-des {
 }
 
 .form-group {
+    height: 5vh;
     width: 100%;
     border: none;
     display: flex;
     align-items: center;
+}
+
+.form-group:nth-last-child(2),
+.form-group:nth-last-child(3) {
+    height: fit-content;
+}
+
+.fixed {
+    width: 70%;
+}
+
+.fixed input {
+    width: 21px !important;
+    height: 21px !important;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 .form-group label {
