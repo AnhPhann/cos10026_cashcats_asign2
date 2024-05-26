@@ -83,6 +83,7 @@
 					<th>Last Name</th>
 					<th>Gender</th>
 					<th>Date of Birth</th>
+                    <th>Address</th>
 					<th>Suburb</th>
 					<th>Postcode</th>
 					<th>State</th>
@@ -103,6 +104,7 @@
 						<td>{$row['lastName']}</td>
 						<td>{$row['gender']}</td>
 						<td>{$row['dob']}</td>
+                        <td>{$row['address']}</td>
 						<td>{$row['suburb']}</td>
 						<td>{$row['postcode']}</td>
 						<td>{$row['state']}</td>
