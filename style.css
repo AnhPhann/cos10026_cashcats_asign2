@@ -80,7 +80,7 @@ header::before {
 }
 
 header img {
-    height: var(--height);
+    height: 3.5rem;
     padding-right: .5rem;
     align-self: center;
 }
@@ -89,7 +89,7 @@ header .logo {
     line-height: var(--height);
     max-height: var(--height);
     color: var(--dark-pink);
-    font-size: 30px;
+    font-size: 1.5rem;
     font-weight: 800;
     text-transform: uppercase;
     display: flex;
@@ -141,9 +141,10 @@ nav {
 
 .nav-list {
     display: flex;
-    padding-left: 3vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
 }
     
 nav li a:not(.action-btn) {
@@ -177,6 +178,43 @@ nav ul li a.active:hover::after {
     
 nav li a.active {
     color: var(--dark-pink);
+}
+
+.nav-list li:last-child:not(li ul li),
+.nav-list li:nth-last-child(2):not(li ul li) {
+    display: none;
+}
+
+/* Dropdown Styling */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    display: none;
+    position: absolute;
+    top: 2.5rem;
+    left: -3rem;
+    background-color: var(--light-pinkpastel);
+    transition: all ease-in-out 250ms;
+}
+
+.dropdown-item {
+    padding: .75em 1.5em;
+}
+
+.dropdown:hover>.dropdown-menu,
+.dropdown a:hover~.dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+
+.dropdown ul li a {
+    white-space: nowrap;
 }
 
 /* ------------------------------------------------------------------ NAV-BAR end ------------------------------------------------------------------ */

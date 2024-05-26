@@ -20,7 +20,6 @@
             include_once("./includes/menu.inc.php");
         ?>
     </header>
-
   
   <!-- NOT HOME BANNER -->
     <div class="main-banner">
