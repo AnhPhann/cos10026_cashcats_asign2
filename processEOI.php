@@ -176,7 +176,7 @@ if (!$conn) {
     }
 
     // ==  Continue processing to the table if no errors == //
-    if ($error === "") {
+    if ($error ===  "") {
         // Make sure the ID is auto_increment although one of the ID was deleted
         $query = "SELECT MAX(EOInumber) AS new_id FROM eoi";
         $result = mysqli_query($conn, $query);
@@ -191,16 +191,19 @@ if (!$conn) {
 
         // Execute the statement
         if(mysqli_stmt_execute($stmt)) {
-            echo "<p>Your Expression of Interest Number is: ". mysqli_stmt_insert_id($stmt). ".</p>";
+            // Generate a unique identifier for the confirmation page, typically the EOInumber
+            $redirectUrl = "confirmation.php?EOInumber=". mysqli_stmt_insert_id($stmt);
+            header("Location: $redirectUrl");
+            exit();
         } else {
             echo "<p>Something is wrong with the query execution.</p>";
         }
-
         // Close the statement
         mysqli_stmt_close($stmt);
 
         // Close the connection
         mysqli_close($conn);
+
     } else {
         echo $error;
     }
@@ -241,3 +244,6 @@ function validate_postcode($state, $postcode) {
             return false;
     }
 }
+
+               
+ 
