@@ -3,9 +3,6 @@
 <head>
     <?php
         include("./includes/header.inc.php");
-        require_once("settings.php");
-
-        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     ?>
     
     <title>Home Page</title>

@@ -12,7 +12,7 @@ require_once("settings.php");
 $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
 if (!$conn) {
-    die ("Database connection failed: " . mysqli_connect_error());
+    die("Database connection failed: " . mysqli_connect_error());
 } else {
     // CREATE EOI TABLE if table not exist
     $query = "CREATE TABLE IF NOT EXISTS eoi (
@@ -47,7 +47,7 @@ if (!$conn) {
     // ==  Validate each field on the from == //
     // Job Reference Number
     if (!isset($_POST["jobRefNum"])) {
-        $errors['jobRefNum'] = "<p>Job Reference Number is required!</p>";
+        $errors[] = "<p>Job Reference Number is required!</p>";
     } elseif (!preg_match('/^[a-zA-Z0-9]{5}$/', $_POST["jobRefNum"])) { 
         $errors[] = "<p>Job Reference Number must be 5 alphanumeric characters.</p>";
     } else {

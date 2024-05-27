@@ -8,3 +8,9 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="manage.css">
 <link rel="icon" type="image/png" href="images/web-icon.png">
+
+<?php
+    require_once("settings.php");
+
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+?>
