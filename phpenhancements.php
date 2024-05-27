@@ -91,8 +91,8 @@
     
     <section class="en-vis">
         <p>
-            Adding Sorting Options To allow the manager to sort the EOI records by a selected field, 
-            you can add sorting links or buttons for each sortable column in the table header. When generating 
+            Adding Sorting Options To allow the manager to sort the EOI records by a selected field: 
+            You can add sorting links or buttons for each sortable column in the table header. When generating 
             the table header dynamically with PHP, check if the current column is allowed for sorting. If so, 
             create a hyperlink that passes the column name and sort order (ascending or descending) as URL 
             parameters to the PHP script. You can use an array to define the allowed columns for sorting as 
@@ -105,7 +105,7 @@
         </section>
 
         <p>
-            Handling the Sorting Request In your PHP script, retrieve the requested column and sort order 
+            Handling the Sorting Request In your PHP script: retrieve the requested column and sort order 
             from the URL parameters using the $_GET superglobal. Validate the column name against the predefined 
             array of allowed columns. If the column is valid, use it in the SQL query's ORDER BY clause. 
             Determine the sort order based on the URL parameter, defaulting to ascending order if not specified. 
@@ -113,7 +113,7 @@
         </p>
 
         <p>
-            Updating the Table Display After retrieving the sorted EOI records from the database, dynamically 
+            Updating the Table Display after retrieving the sorted EOI records from the database: dynamically 
             generate the HTML table rows in the desired order. You can highlight the currently sorted column by 
             adding a CSS class to the corresponding table header and data cells. Indicate the current sort order 
             using icons or arrows next to the sorted column header. Include the appropriate URL parameters in the 
