@@ -131,8 +131,7 @@
                 $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
             
                 $error = "";
-            
-                
+
                 // Displaying Content
                 function displayResults($result) {
                     echo "<table>
@@ -177,16 +176,15 @@
                                     <td>{$row['otherSkills']}</td>
                                     <td>{$row['status']}</td>
                                 </tr>";
-                    }
+                        }
                     } else {
                         echo "<tr><td colspan='14'>No results found</td></tr>";
                     }
                     echo "</table>";
                 }
-                
+
                 // Displaying all EOI
                 if(isset($_POST['list_all'])) {
-                    // $result = mysqli_query($conn, "SELECT * FROM eoi");
                     $sql = "SELECT *, DATE_FORMAT(dob, '%d/%m/%Y') AS formatted_dob FROM eoi";
                     $result = mysqli_query($conn, $sql);
 
@@ -197,7 +195,7 @@
                         displayResults($result);
                     }
                 }
-            
+
                 // Displaying by Job Ref Num
                 if(isset($_POST['list_by_job'])) {
                     $jobRefNum = mysqli_real_escape_string($conn, $_POST['jobRefNum']);
@@ -210,7 +208,7 @@
                         displayResults($result);
                     }
                 }
-            
+
                 // Displaying by Applicant
                 if(isset($_POST['list_by_name'])) {
                     $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
@@ -225,44 +223,50 @@
                         displayResults($result);
                     }
                 }
-            
+
                 // Changing EOI status
                 if (isset($_POST['change_status'])) {
-                    $EOInumber = mysqli_real_escape_string($conn, $_POST['EOInumber']);
-                    $status = mysqli_real_escape_string($conn, $_POST['status']);
-                    $sql = "UPDATE eoi SET Status = '$status' WHERE EOInumber = '$EOInumber'";
-                    $result = mysqli_query($conn, $sql);
+                    if(isset($_POST['EOInumber']) && isset($_POST['status'])) {
+                        $EOInumber = mysqli_real_escape_string($conn, $_POST['EOInumber']);
+                        $status = mysqli_real_escape_string($conn, $_POST['status']);
+                        $sql = "UPDATE eoi SET Status = '$status' WHERE EOInumber = '$EOInumber'";
+                        $result = mysqli_query($conn, $sql);
 
-                    if (!$result) {
-                        echo "<p>There is no applicants has the number of $EOInumber to change or nothing in the table</p>";
-                    } else {
-                        echo "<h2 class='result'>Successfully changed status '$status' for EOI number $EOInumber.</h2>";
+                        if (!$result) {
+                            echo "<p>There is no applicants has the number of $EOInumber to change or nothing in the table</p>";
+                        } else {
+                            echo "<h2 class='result'>Successfully changed status '$status' for EOI number $EOInumber.</h2>";
+                        }
                     }
                 }
-            
+
                 // Deleting EOI from Table
                 if (isset($_POST['delete_eoi'])) {
-                    $eoi_number_delete = mysqli_real_escape_string($conn, $_POST['eoi_number_delete']);
-                    $sql = "DELETE FROM eoi WHERE EOInumber = '$eoi_number_delete'";
-                    $result = mysqli_query($conn, $sql);
+                    if(isset($_POST['eoi_number_delete'])) {
+                        $eoi_number_delete = mysqli_real_escape_string($conn, $_POST['eoi_number_delete']);
+                        $sql = "DELETE FROM eoi WHERE EOInumber = '$eoi_number_delete'";
+                        $result = mysqli_query($conn, $sql);
 
-                    if (!$result) {
-                        echo "<p>There is no applicants has the number of $EOInumber to delete or nothing in the table</p>";
-                    } else {
-                        echo "<h2 class='result'>Successfully deleted EOI number $EOInumber.</h2>";
+                        if (!$result) {
+                            echo "<p>There is no applicants has the number of $eoi_number_delete to delete or nothing in the table</p>";
+                        } else {
+                            echo "<h2 class='result'>Successfully deleted EOI number $eoi_number_delete.</h2>";
+                        }
                     }
                 }
 
                 // Deleting EOI by Job Reference Number
                 if (isset($_POST['delete_jobRefNum'])) {
-                    $job_ref_num_delete = mysqli_real_escape_string($conn, $_POST['job_ref_num_delete']);
-                    $sql = "DELETE FROM eoi WHERE JobRefNum = '$job_ref_num_delete'";
-                    $result = mysqli_query($conn, $sql);
-                    
-                    if (!$result) {
-                        echo "<p>There is no applicants applied for '$job_ref_num_delete' to delete or nothing in the table</p>";
-                    } else {
-                        echo "<h2 class='result'>Successfully deleted all EOI numbers applied for the '$job_ref_num_delete'.</h2>";
+                    if(isset($_POST['job_ref_num_delete'])) {
+                        $job_ref_num_delete = mysqli_real_escape_string($conn, $_POST['job_ref_num_delete']);
+                        $sql = "DELETE FROM eoi WHERE JobRefNum = '$job_ref_num_delete'";
+                        $result = mysqli_query($conn, $sql);
+
+                        if (!$result) {
+                            echo "<p>There is no applicants applied for '$job_ref_num_delete' to delete or nothing in the table</p>";
+                        } else {
+                            echo "<h2 class='result'>Successfully deleted all EOI numbers applied for the '$job_ref_num_delete'.</h2>";
+                        }
                     }
                 }
 
@@ -271,9 +275,9 @@
                     $sorts = ["EOInumber", "status", "state", "gender", "HTML", "CSS", "JavaScript"];
                     if (in_array($_POST["sortEOIs"], $sorts)) {
                         $sortEOIs = mysqli_real_escape_string($conn, $_POST["sortEOIs"]);
-                        $sql = "SELECT *, DATE_FORMAT(dob, '%d/%m/%Y') AS formatted_dob FROM eoi ORDER BY '$sortEOIs'";
+                        $sql = "SELECT *, DATE_FORMAT(dob, '%d/%m/%Y') AS formatted_dob FROM eoi ORDER BY $sortEOIs";
                         $result = mysqli_query($conn, $sql);
-                        
+
                         if (!$result) {
                             echo "<p>Something went wrong</p>";
                         } else {
@@ -287,13 +291,12 @@
                 function TickOrCross($value) {
                     return $value ? "&#x2714;" : "&#x2718;";
                 }
-                
+
                 mysqli_close($conn);
             ?>
         </div>
     </div>
 </div>
-
 
 <!-- Footer -->
 <footer>
