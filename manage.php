@@ -164,7 +164,7 @@
                                     <td>{$row['firstName']}</td>
                                     <td>{$row['lastName']}</td>
                                     <td>{$row['gender']}</td>
-                                    <td>{$row['dob']}</td>
+                                    <td>{$row['formatted_dob']}</td>
                                     <td>{$row['address']}</td>
                                     <td>{$row['suburb']}</td>
                                     <td>{$row['postcode']}</td>
@@ -186,7 +186,10 @@
                 
                 // Displaying all EOI
                 if(isset($_POST['list_all'])) {
-                    $result = mysqli_query($conn, "SELECT * FROM eoi");
+                    // $result = mysqli_query($conn, "SELECT * FROM eoi");
+                    $sql = "SELECT *, DATE_FORMAT(dob, '%d/%m/%Y') AS formatted_dob FROM eoi";
+                    $result = mysqli_query($conn, $sql);
+
                     if (!$result) {
                         echo "<p>There is no table or nothing in the table</p>";
                     } else {
@@ -198,7 +201,7 @@
                 // Displaying by Job Ref Num
                 if(isset($_POST['list_by_job'])) {
                     $jobRefNum = mysqli_real_escape_string($conn, $_POST['jobRefNum']);
-                    $sql = "SELECT * FROM eoi WHERE `jobRefNum`='$jobRefNum'";
+                    $sql = "SELECT *, DATE_FORMAT(dob, '%d/%m/%Y') AS formatted_dob FROM eoi WHERE `jobRefNum`='$jobRefNum'";
                     $result = mysqli_query($conn, $sql);
                     if (!$result) {
                         echo "<p>There is no application for $jobRefNum or nothing in the table</p>";
@@ -212,7 +215,7 @@
                 if(isset($_POST['list_by_name'])) {
                     $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
                     $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
-                    $sql = "SELECT * FROM eoi WHERE `firstName`='$firstName' OR `lastName`='$lastName'";
+                    $sql = "SELECT *, DATE_FORMAT(dob, '%d/%m/%Y') AS formatted_dob FROM eoi WHERE `firstName`='$firstName' OR `lastName`='$lastName'";
                     $result = mysqli_query($conn, $sql);
 
                     if (!$result) {
@@ -268,7 +271,7 @@
                     $sorts = ["EOInumber", "status", "state", "gender", "HTML", "CSS", "JavaScript"];
                     if (in_array($_POST["sortEOIs"], $sorts)) {
                         $sortEOIs = mysqli_real_escape_string($conn, $_POST["sortEOIs"]);
-                        $sql = "SELECT * FROM eoi ORDER BY `$sortEOIs`";
+                        $sql = "SELECT *, DATE_FORMAT(dob, '%d/%m/%Y') AS formatted_dob FROM eoi ORDER BY '$sortEOIs'";
                         $result = mysqli_query($conn, $sql);
                         
                         if (!$result) {
